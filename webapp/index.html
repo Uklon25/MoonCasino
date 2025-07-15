@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>MoonCasino WebApp</title>
+  <meta charset="UTF-8">
+  <title>MoonCasino</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 18px; border-radius: 12px; background: #222; color: white; border: 1px solid #444; }
+  </style>
 </head>
 <body>
   <h1>🎰 MoonCasino</h1>
-  <button onclick="playBowling()">🎳 Боулинг Дуэль</button>
-  <button onclick="playDice()">🎲 Кубики Дуэль</button>
+  <p>Выберите игру:</p>
+  <button onclick="play('bowling')">🎳 Боулинг (100₮)</button>
+  <button onclick="play('dice')">🎲 Кубики (100₮)</button>
+
   <script>
-    function playBowling() {
-      Telegram.WebApp.sendData(JSON.stringify({ game: 'bowling', amount: 100 }));
-      Telegram.WebApp.close();
-    }
-    function playDice() {
-      Telegram.WebApp.sendData(JSON.stringify({ game: 'dice', amount: 100 }));
+    function play(game) {
+      Telegram.WebApp.sendData(JSON.stringify({ game, amount: 100 }));
       Telegram.WebApp.close();
     }
   </script>
